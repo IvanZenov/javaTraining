@@ -7,10 +7,6 @@ import static java.lang.Math.pow;
 
 public class FirstTask {
 
-    public static void main(String[] args) {
-        experiment1(12,-30);
-    }
-
     //Task 1
     public static double getValueByFormula (double a, double b, double c) throws ArithmeticException{
         double z = pow(b,2) + 4*a*c;
