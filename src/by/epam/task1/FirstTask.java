@@ -41,7 +41,7 @@ public class FirstTask {
     }
 
     //Task 4
-    public static double fff(double x){
+    public static double functionWithExpression(double x){
         return x<=13 ? (pow(-x,3) + 9): (-3)/(x+1);
     }
 
