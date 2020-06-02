@@ -7,10 +7,6 @@ import static java.lang.Math.pow;
 
 public class FirstTask {
 
-    public static void main(String[] args) {
-        experiment1(12,-30);
-    }
-
     //Task 1
     public static double getValueByFormula (double a, double b, double c) throws ArithmeticException{
         double z = pow(b,2) + 4*a*c;
@@ -45,7 +41,7 @@ public class FirstTask {
     }
 
     //Task 4
-    public static double fff(double x){
+    public static double functionValue(double x){
         return x<=13 ? (pow(-x,3) + 9): (-3)/(x+1);
     }
 
@@ -69,6 +65,7 @@ public class FirstTask {
 
 
     //Task 6
+    /*
     public static void experimentInt(int a1,int d){
         int currentSum = a1;
         int an = a1;
@@ -101,6 +98,64 @@ public class FirstTask {
             }
         }
     }
+     */
+
+    public static void experimentInt(int a1,int d){
+        int beforeSum = 0;
+        int currentSum = 0;
+        int an = a1;
+        int n = 1;
+        if (d>0){
+            while (beforeSum <= currentSum){
+                beforeSum = currentSum;
+                // currentSum = (a1+an)*n/2;
+                an+=d;
+                n++;
+                currentSum+=an;
+            }
+        }
+        else {
+            while (beforeSum >= currentSum){
+                beforeSum = currentSum;
+                // currentSum = (a1+an)*n/2;
+                an+=d;
+                n++;
+                currentSum+=an;
+            }
+        }
+        System.out.println(n);
+        System.out.println(beforeSum);
+        System.out.println(currentSum);
+    }
+
+    public static void experimentLong(long a1,long d){
+        long beforeSum = 0;
+        long currentSum = 0;
+        long an = a1;
+        long n = 1;
+        if (d>0){
+            while (beforeSum <= currentSum){
+                beforeSum = currentSum;
+                // currentSum = (a1+an)*n/2;
+                an+=d;
+                n++;
+                currentSum+=an;
+            }
+        }
+        else {
+            while (beforeSum >= currentSum){
+                beforeSum = currentSum;
+                // currentSum = (a1+an)*n/2;
+                an+=d;
+                n++;
+                currentSum+=an;
+            }
+        }
+        System.out.println(n);
+        System.out.println(beforeSum);
+        System.out.println(currentSum);
+    }
+
 
 
     //Task 7
