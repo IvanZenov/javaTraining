@@ -41,11 +41,7 @@ public class FirstTask {
     }
 
     //Task 4
-<<<<<<< HEAD
     public static double functionValue(double x){
-=======
-    public static double functionWithExpression(double x){
->>>>>>> bbf01fee01ff08b9f05b2e3a76826800a8307a37
         return x<=13 ? (pow(-x,3) + 9): (-3)/(x+1);
     }
 
