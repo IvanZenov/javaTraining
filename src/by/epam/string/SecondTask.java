@@ -1,9 +1,12 @@
 package by.epam.string;
 
+import java.util.Arrays;
+
+import static java.util.stream.Collectors.joining;
+
 public class SecondTask {
 
     public static void main(String[] args) {
-
     }
 
     private static final int ONE_HUNDRED_PERCENT = 100;
@@ -43,8 +46,7 @@ public class SecondTask {
         return ONE_HUNDRED_PERCENT - percentageUppercase(str);
     }
 
-    //Удаление одинаковых символов
-    //TODO: should return str
+    //Deleting identical characters
     public static StringBuilder deleteSameSymbol (String str){
         StringBuilder result = new StringBuilder();
         /**
@@ -56,7 +58,8 @@ public class SecondTask {
         str.chars().distinct().forEach(s -> result.append((char) s));
         return result;
     }
-    //Частота встречаемости символа в строке
+
+    //Frequency of occurrence of a character in a string
     //TODO: write this method
     public static int frequencyOfOccurrenceCharacter(String str, char s){
 
@@ -69,38 +72,50 @@ public class SecondTask {
         return stringBuilder.reverse();
     }
 
-    //Вставка подстроки
-    //TODO: recheck return value
+    //Inserting a substring
     public static StringBuilder insertSubstring(String str,String subStr, int place){
         StringBuilder stringBuilder = new StringBuilder(str);
         stringBuilder.insert(place,subStr);
         return stringBuilder;
     }
-    //Удаление подстроки
+
+    //Deleting a substring
     public static String deleteSubstring(String str, String subStr){
         return str.replaceAll(subStr,"");
     }
-    //
-    //Копирование части строки
+
+    //Copying part of a line
     public static String copySubstring(String str, int start, int end){
         return str.substring(start, end);
     }
-    //Определение длины строки
+
+    //Determining the length of a string
     public static int stringLength(String str){
         return str.length();
     }
-    //Количество вхождений подстроки в строку
+
+    //Number of occurrences of a substring in a string
     public static int countSubstring(String str, String subString){
         String strWithoutSubstring = str.replace(subString,"");
         return (str.length() - strWithoutSubstring.length())/subString.length();
     }
-    //Вывести слова строки в обратном порядке
-    //
-    //Заменить пробел и группы пробелов символом "*"
-    public static String changeSpace(String str){
+
+    //Print the words of the string in reverse order
+    public static void showReverseWord (String str){
+        String[] words = str.split(" ");
+        int i = words.length - 1;
+        while (i>=0){
+            System.out.println(words[i]);
+            i--;
+        }
+    }
+
+    //Replace spaces and groups of spaces with the symbol "*"
+    public static String replaceSpace(String str){
         return str.replaceAll(" ","*");
     }
-    //Заменить в самом длинном слове строки буквы 'a' на 'b'
+
+    //Replace the letter 'a' with 'b'in the longest word of the string
     public static String getMaxLengthWordWithReplacement(String str)
     {
         String[]words=str.split(" ");
@@ -113,7 +128,7 @@ public class SecondTask {
         return wordWithMaxLength.replaceAll("a","b");
     }
 
-    //Определить длину самого короткого слова в строке
+    //Determine the length of the shortest word in a string
     public static int getMinLengthWord(String str)
     {
         String[]words=str.split(" ");
@@ -127,17 +142,30 @@ public class SecondTask {
         return wordWithMinLength.length();
     }
 
-    //Подсчет количества слов в строке
-    //
-    //Поменять слова местами
-    //
-    //Удаление последнего слова в строке
+    //Counting the number of words per line
+    public static int countWordInString (String str){
+        return str.split(" ").length;
+    }
+
+    //To change the words in some places
+    public static String changeFirstAndLastWord (String str){
+        String[] words = str.split(" ");
+        String temp = words[words.length - 1];
+        words[words.length - 1] = words[0];
+        words[0] = temp;
+        str = String.join(" ", words);
+        return str;
+    }
+
+    //Deleting the last word in a line
     public static String deleteLastWord (String str){
         return str.substring(0, str.lastIndexOf(" "));
     }
-    //Добавление пробелов в строку
+
+    //Adding spaces to a string
     //
-    //Является ли строка палиндром?
+
+    //Is the string a palindrome?
     public static boolean isPalindrome(String str){
         for (int i = 0; i < str.length()/2; i++) {
             if (str.charAt(i) != str.charAt(str.length() - i - 1)){
@@ -146,13 +174,34 @@ public class SecondTask {
         }
         return true;
     }
-    //Замена подстроки в строке
-    //
-    //Сложение очень длинных целых чисел
-    //
-    //Удаление из строки слов заданной длины
 
-    //Удаление лишних пробелов
+    //Replacing a substring in a string
+    public static String replaceSubstring(String str,String oldSub,String newSub){
+        return str.replace(oldSub,newSub);
+    }
+
+    //The addition of a very long integers
     //
-    //Выделение слов из строки
+    //Deleting words of the specified length from a string
+    public static String deleteWordWithLength(String str,int n){
+        String[] words = str.split(" ");
+        str = Arrays.stream(words)
+                .filter(s -> s.length()!=n)
+                .map(s -> s+ " ")
+                .collect(joining());
+        return str;
+    }
+
+    //Removing extra spaces
+    //
+    //Selecting words from a string
+    public static void selectWord (String str, int position){
+        String [] words = str.split(" ");
+        if (words.length<position){
+            System.out.println("No such position");
+        }
+        else {
+            Arrays.stream(words).forEach(System.out::println);
+        }
+    }
 }
