@@ -1,6 +1,9 @@
 package by.epam.string;
 
+import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collector;
 
 import static java.util.stream.Collectors.joining;
 
@@ -49,12 +52,6 @@ public class SecondTask {
     //Deleting identical characters
     public static StringBuilder deleteSameSymbol (String str){
         StringBuilder result = new StringBuilder();
-        /**
-         * Use Java 8 advantages:
-         * 1. get chars (it's IntStream)
-         * 2. delete same with distinct
-         * 3. Use lambda expression for add unique symbol to result
-         */
         str.chars().distinct().forEach(s -> result.append((char) s));
         return result;
     }
@@ -163,7 +160,7 @@ public class SecondTask {
     }
 
     //Adding spaces to a string
-    //
+    //TODO: understand what is meant
 
     //Is the string a palindrome?
     public static boolean isPalindrome(String str){
@@ -181,7 +178,15 @@ public class SecondTask {
     }
 
     //The addition of a very long integers
-    //
+    public static BigInteger additionOfVeryLongIntegers (String str){
+        String [] numbers = str.split(" ");
+        return BigInteger
+                .valueOf(Arrays.stream(numbers)
+                .map(Integer::valueOf)
+                .reduce(0,Integer::sum)
+                );
+    }
+
     //Deleting words of the specified length from a string
     public static String deleteWordWithLength(String str,int n){
         String[] words = str.split(" ");
