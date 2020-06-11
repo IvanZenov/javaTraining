@@ -2,8 +2,10 @@ package by.epam.string;
 
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.stream.Collector;
+import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.joining;
 
@@ -57,10 +59,8 @@ public class SecondTask {
     }
 
     //Frequency of occurrence of a character in a string
-    //TODO: write this method
-    public static int frequencyOfOccurrenceCharacter(String str, char s){
-
-        return 0;
+    public static long frequencyOfOccurrenceCharacter(String str, char s){
+        return str.chars().filter(c->c==s).count();
     }
 
     //String reverse
@@ -129,14 +129,13 @@ public class SecondTask {
     public static int getMinLengthWord(String str)
     {
         String[]words=str.split(" ");
-        String wordWithMinLength="";
-        for(String word: words)
-        {
-            //TODO should be < but u need check max value of String
-            if(word.length()>wordWithMinLength.length())
-                wordWithMinLength=word;
-        }
-        return wordWithMinLength.length();
+        Arrays.sort(words, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.length()-o2.length();
+            }
+        });
+        return words[0].length();
     }
 
     //Counting the number of words per line
@@ -198,7 +197,8 @@ public class SecondTask {
     }
 
     //Removing extra spaces
-    //
+    //TODO: understand what is meant
+
     //Selecting words from a string
     public static void selectWord (String str, int position){
         String [] words = str.split(" ");
