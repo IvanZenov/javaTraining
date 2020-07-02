@@ -1,18 +1,14 @@
 package by.epam.string;
 
+import by.epam.task1.FirstTask;
+
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Map;
-import java.util.stream.Collector;
-import java.util.stream.IntStream;
-
 import static java.util.stream.Collectors.joining;
 
 public class SecondTask {
-
-    public static void main(String[] args) {
-    }
 
     private static final int ONE_HUNDRED_PERCENT = 100;
 
@@ -209,4 +205,5 @@ public class SecondTask {
             Arrays.stream(words).forEach(System.out::println);
         }
     }
+
 }
